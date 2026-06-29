@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>System Security Scan</title>
+
+<style>
+body {
+  background: black;
+  color: #00ff00;
+  font-family: monospace;
+  padding: 20px;
+}
+
+.bar {
+  width: 100%;
+  background: #222;
+  border: 1px solid #00ff00;
+  margin-top: 20px;
+}
+
+.progress {
+  width: 0%;
+  height: 20px;
+  background: #00ff00;
+}
+
+.warning {
+  color: red;
+  font-weight: bold;
+  animation: blink 0.5s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<h2>System Security Scan</h2>
+<p class="warning">⚠ User: Sampath Sandaruwan</p>
+
+<div class="bar">
+  <div class="progress" id="progress"></div>
+</div>
+
+<pre id="text"></pre>
+
+<script>
+let messages = [
+"Initializing scan engine...",
+"Loading system modules...",
+"Scanning files...",
+"Checking memory sectors...",
+"Analyzing user activity...",
+"Detecting anomalies...",
+"Tracing network connections...",
+"Inspecting security firewall...",
+"Final verification..."
+];
+
+let i = 0;
+let text = document.getElementById("text");
+let progress = document.getElementById("progress");
+
+function typeEffect() {
+  if (i < messages.length) {
+    text.innerHTML += ">> " + messages[i] + "\n";
+    progress.style.width = ((i+1) / messages.length) * 100 + "%";
+    i++;
+    setTimeout(typeEffect, 1100);
+  } else {
+    setTimeout(() => {
+      text.innerHTML += "\n============================\n";
+      text.innerHTML += "SYSTEM RESULT: SAFE\n";
+      text.innerHTML += "============================\n\n";
+      text.innerHTML += "😄 Just a prank, Sampath Sandaruwan!\nNothing is wrong with your device.";
+      progress.style.width = "100%";
+    }, 1000);
+  }
+}
+
+typeEffect();
+</script>
+
+</body>
+</html>
